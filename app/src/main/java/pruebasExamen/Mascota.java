@@ -4,11 +4,13 @@
  */
 package pruebasExamen;
 
+import java.io.Serializable;
+
 /**
  *
  * @author luisv
  */
-public class Mascota {
+public class Mascota implements Serializable {
     Integer vida;
     Integer velocidad;
 
