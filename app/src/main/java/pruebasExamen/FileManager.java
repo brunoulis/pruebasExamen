@@ -5,9 +5,13 @@
 package pruebasExamen;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -72,4 +76,33 @@ public class FileManager {
         return jugadorImport;
     }
 
+    public Boolean exportText(Jugador jugador, String file){
+        FileWriter f = null;
+        
+        try{
+            f=new FileWriter(file);
+            BufferedWriter bf = new BufferedWriter(f);
+            bf.write("Jugador " + jugador.getAtaque() +" " + jugador.getVida());
+            bf.newLine();
+            for (int i = 0; i < jugador.LListaMascota.size(); i++) {
+                bf.write(jugador.LListaMascota.get(i).toText());
+                bf.newLine();
+                
+            }
+            bf.close();
+        
+        
+        
+        
+        } catch (IOException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    
+    
+    
+        return true;
+    }
+    
+    
 }

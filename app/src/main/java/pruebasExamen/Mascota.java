@@ -38,6 +38,9 @@ public class Mascota implements Serializable {
         this.velocidad = velocidad;
     }
     
+    public String toText(){
+        return "mascota "+ this.vida+" "+ this.velocidad;
     
+    }
     
 }
