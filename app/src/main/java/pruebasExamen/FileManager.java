@@ -24,38 +24,32 @@ public class FileManager {
         FileReader f = null;
         Jugador jugadorImport = new Jugador();
         try {
-            
+
             f = new FileReader(file);
             BufferedReader bf = new BufferedReader(f);
-            
-            while((cadena=bf.readLine())!=null){
+
+            while ((cadena = bf.readLine()) != null) {
                 System.out.println(cadena);
-                
+
                 String[] listJugador = cadena.split(" ");
-                for (int i = 0; i< listJugador.length;i++){
+                for (int i = 0; i < listJugador.length; i++) {
                     String string = listJugador[i];
                     System.out.println(string);
                 }
-                if(cadena.contains("jugador")){
-                    jugadorImport= new Jugador(Integer.parseInt(listJugador[1]),Integer.parseInt(listJugador[2]));
-                }else{
-                    if(cadena.contains("mascota")){
-                        Mascota nMascota = new Mascota(Integer.parseInt(listJugador[1]),Integer.parseInt(listJugador[2]));
+                if (cadena.contains("jugador")) {
+                    jugadorImport = new Jugador(Integer.parseInt(listJugador[1]), Integer.parseInt(listJugador[2]));
+                } else {
+                    if (cadena.contains("mascota")) {
+                        Mascota nMascota = new Mascota(Integer.parseInt(listJugador[1]), Integer.parseInt(listJugador[2]));
                         jugadorImport.LListaMascota.add(nMascota);
-                    
-                    }else{
+
+                    } else {
                         System.out.println("No es un objeto valido");
-                    
+
                     }
-                
-                
-                
+
                 }
-            
-            
-            
-            
-            
+
             }
             bf.close();
 
@@ -76,33 +70,26 @@ public class FileManager {
         return jugadorImport;
     }
 
-    public Boolean exportText(Jugador jugador, String file){
+    public Boolean exportText(Jugador jugador, String file) {
         FileWriter f = null;
-        
-        try{
-            f=new FileWriter(file);
+
+        try {
+            f = new FileWriter(file);
             BufferedWriter bf = new BufferedWriter(f);
-            bf.write("Jugador " + jugador.getAtaque() +" " + jugador.getVida());
+            bf.write("Jugador " + jugador.getAtaque() + " " + jugador.getVida());
             bf.newLine();
             for (int i = 0; i < jugador.LListaMascota.size(); i++) {
                 bf.write(jugador.LListaMascota.get(i).toText());
                 bf.newLine();
-                
+
             }
             bf.close();
-        
-        
-        
-        
+
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
         }
-    
-    
-    
+
         return true;
     }
-    
-    
+
 }

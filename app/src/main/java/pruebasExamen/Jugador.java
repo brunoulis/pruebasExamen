@@ -4,6 +4,7 @@
  */
 package pruebasExamen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,8 @@ public class Jugador {
     public Jugador(Integer vida, Integer ataque ) {
         this.vida = vida;
         this.ataque = ataque;
+        
+        LListaMascota = new ArrayList<Mascota>();
         
     }
 

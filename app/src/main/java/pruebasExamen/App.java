@@ -4,11 +4,22 @@
 package pruebasExamen;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+    
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Jugador j1 = new Jugador(20, 30);
+        Mascota m1 = new Mascota(10, 20);
+        Mascota m2 = new Mascota(20,20);
+        j1.LListaMascota.add(m1);
+        j1.LListaMascota.add(m2);
+        FileManager f1=new FileManager();
+        if(f1.exportText(j1, "pruebas.txt")==true){
+            System.out.println("exportacion correcta");
+        
+        }
+        f1.importFromText("pruebas.txt");
+        
+        
+        
     }
 }

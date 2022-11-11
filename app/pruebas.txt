@@ -1,0 +1,3 @@
+Jugador 30 20
+mascota 10 20
+mascota 20 20
